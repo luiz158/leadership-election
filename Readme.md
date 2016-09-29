@@ -1,4 +1,4 @@
-=== Redis Leadership Election through Spring Cloud Cluster
+# Redis Leadership Election through Spring Cloud Cluster
 
 Technologies used:
 - Spring Cloud
