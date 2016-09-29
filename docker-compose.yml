@@ -1,0 +1,22 @@
+version: '2'
+services:
+  election1:
+    build: .
+    environment:
+      server.port: 8081
+      spring.redis.host: redis
+    ports:
+      - 8081:8081
+    links:
+      - redis
+  election2:
+      build: .
+      environment:
+        server.port: 8082
+        spring.redis.host: redis
+      ports:
+        - 8082:8082
+      links:
+        - redis
+  redis:
+    image: redis:latest
