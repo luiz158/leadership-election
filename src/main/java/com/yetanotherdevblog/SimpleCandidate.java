@@ -41,13 +41,12 @@ public class SimpleCandidate extends DefaultCandidate implements CommandLineRunn
             hooks.add(cron);
             scheduler.addTask(getTask(), cron);
         }
-
     }
 
     private Runnable getTask() {
         return () -> {
-            LOGGER.info("Pinging: ");
-
+            LOGGER.info("Pinging");
         };
     }
+
 }
