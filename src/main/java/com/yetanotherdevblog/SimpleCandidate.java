@@ -3,21 +3,20 @@ package com.yetanotherdevblog;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.integration.leader.Context;
-import org.springframework.integration.leader.DefaultCandidate;
+import org.springframework.cloud.cluster.leader.Context;
+import org.springframework.cloud.cluster.leader.DefaultCandidate;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.UUID;
 
-public class SimpleActor extends DefaultCandidate implements CommandLineRunner {
+public class SimpleCandidate extends DefaultCandidate implements CommandLineRunner {
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(SimpleActor.class);
+    private final static Logger LOGGER = LoggerFactory.getLogger(SimpleCandidate.class);
 
-    private final Config.Scheduler scheduler;
+    private final ZookeeperLeaderConfig.Scheduler scheduler;
 
-    public SimpleActor(Config.Scheduler scheduler) {
-        super(UUID.randomUUID().toString(), "");
+    public SimpleCandidate(String id, String role, ZookeeperLeaderConfig.Scheduler scheduler) {
+        super(id, role);
         this.scheduler = scheduler;
     }
 

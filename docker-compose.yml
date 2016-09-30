@@ -3,20 +3,20 @@ services:
   election1:
     build: .
     environment:
-      server.port: 8081
-      spring.redis.host: redis
-    ports:
-      - 8081:8081
+      server.port: 0
+      spring.cloud.cluster.zookeeper.connect: zookeeper:2181
     links:
-      - redis
+      - zookeeper
   election2:
-      build: .
-      environment:
-        server.port: 8082
-        spring.redis.host: redis
-      ports:
-        - 8082:8082
-      links:
-        - redis
-  redis:
-    image: redis:latest
+    build: .
+    environment:
+      server.port: 0
+      spring.cloud.cluster.zookeeper.connect: zookeeper:2181
+    links:
+      - zookeeper
+  zookeeper:
+    image: jplock/zookeeper:3.4.9
+    ports:
+      - 2181:2181
+      - 2888:2888
+      - 3888:3888
