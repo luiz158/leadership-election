@@ -1,5 +1,7 @@
 # Zookeeper Leadership Election through Spring Cloud Cluster
 
+> This implementation uses deprecated classes
+
 Technologies used:
 - Spring Cloud
 - Zookeeper
